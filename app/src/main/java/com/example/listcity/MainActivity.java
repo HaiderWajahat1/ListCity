@@ -42,11 +42,10 @@ public class MainActivity extends AppCompatActivity {
         confirm = findViewById(R.id.btn_confirm);
         etCity = findViewById(R.id.et_city);
 
-
         etCity.setVisibility(View.GONE);
         confirm.setVisibility(View.GONE);
 
-        String[] cities = {"Edmonton", "Vancouver", "Moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing", "Osaka", "New Delhi"};
+        String[] cities = {"Vancouver", "Moscow", "Sydney", "Berlin", "Osaka", "Pindi"};
 
         dataList = new ArrayList<>();
         dataList.addAll(Arrays.asList(cities));
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             dataList.add(newCity);
-            cityAdapter.notifyDataSetChanged(); // refresh ListView
+            cityAdapter.notifyDataSetChanged();
 
             etCity.setText("");
             etCity.setVisibility(View.GONE);
@@ -96,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         });
 
-        // ===== NEW INFO =====
-        // DELETE button removes the selected city
         delete.setOnClickListener(v -> {
 
             if (index == -1) {
@@ -108,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             dataList.remove(index);
-            cityAdapter.notifyDataSetChanged(); // refresh ListView
+            cityAdapter.notifyDataSetChanged();
             index = -1;
 
             Toast.makeText(this,
