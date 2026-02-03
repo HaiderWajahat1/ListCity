@@ -6,7 +6,6 @@ import android.widget.ListView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         cityList.setOnItemClickListener((parent, view, position, id) -> {
             index = position;
-            Toast.makeText(this,
-                    "Selected: " + dataList.get(position),
-                    Toast.LENGTH_SHORT).show();
         });
 
         add.setOnClickListener(v -> {
@@ -76,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
             String newCity = etCity.getText().toString().trim();
 
             if (newCity.isEmpty()) {
-                Toast.makeText(this,
-                        "Please enter a city name.",
-                        Toast.LENGTH_SHORT).show();
+
                 return;
             }
 
@@ -90,17 +84,13 @@ public class MainActivity extends AppCompatActivity {
             confirm.setVisibility(View.GONE);
             addModeActive = false;
 
-            Toast.makeText(this,
-                    "City added successfully.",
-                    Toast.LENGTH_SHORT).show();
+
         });
 
         delete.setOnClickListener(v -> {
 
             if (index == -1) {
-                Toast.makeText(this,
-                        "Select a city first.",
-                        Toast.LENGTH_SHORT).show();
+
                 return;
             }
 
@@ -108,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
             cityAdapter.notifyDataSetChanged();
             index = -1;
 
-            Toast.makeText(this,
-                    "City deleted successfully.",
-                    Toast.LENGTH_SHORT).show();
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
